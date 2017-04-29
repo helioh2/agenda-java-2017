@@ -11,10 +11,7 @@ public class JDBCInsereTest {
     //JEITO FEIO DE SE FAZER UM PROGRAMA COM BANCO DE DADOS:
     
     public static void main(String[] args) throws SQLException {
-        Connection con = null;
-        try {
-            // conectando
-            con = new ConnectionFactory().getConnection();
+        try (Connection con = new ConnectionFactory().getConnection()) {
 
             // cria um preparedStatement
             String sql = "INSERT INTO contatos" +
@@ -37,8 +34,6 @@ public class JDBCInsereTest {
 
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
-            con.close();
         }
     }
 }
