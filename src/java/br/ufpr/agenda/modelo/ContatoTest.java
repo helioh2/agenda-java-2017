@@ -27,6 +27,15 @@ public class ContatoTest {
         ContatoDao bd = new ContatoDao();
         bd.adiciona(contato1);
         
+        for (Integer i = 1; i < 5; i++){
+            Contato contato2 = new Contato();
+            contato1.setNome("helio"+i);
+            contato1.setEmail("heliohenrique3@gmail.com_"+i);
+            contato1.setEndereco("rua lupicinio_"+i);
+            contato1.setDataNascimento(Calendar.getInstance());
+            bd.adiciona(contato1);
+        }
+        
         System.out.println(contato1.getNome());
         
         //Busca:       
