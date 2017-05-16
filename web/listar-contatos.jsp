@@ -17,7 +17,8 @@
     </head>
     <body>
         <h1>Agenda de Contatos</h1>
-        <ul>
+        <table>
+            <th>Nome</th> <th>Email</th> <th>Endereço</th> <th>Data de Nascimento</th>
         <%
             ContatoDao dao = new ContatoDao();
             List<Contato> contatos = dao.getLista();
@@ -25,12 +26,15 @@
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String dataNascStr = dateFormat.format(contato.getDataNascimento().getTime());
         %>
-    <li> <%= contato.getNome()%>,<%= contato.getEmail()%>, 
-        <%= contato.getEndereco()%>,<%= dataNascStr %>
-    </li>
+            <tr>
+                <td> <%= contato.getNome()%> </td>
+                <td><%= contato.getEmail()%> </td>
+                <td><%= contato.getEndereco()%> </td>
+                <td><%= dataNascStr %> </td>
+    </tr>
            <%     
             }
             %>
-        </ul>
+        </table>
     </body>
 </html>
