@@ -20,7 +20,7 @@ and open the template in the editor.
     <body>
         <h1>Adiciona Contatos</h1>
         <hr />
-        <form action="adicionaContato">
+        <form action="mvc?logica=AdicionaContato" method = "POST">
             Nome: <input type="text" name="nome" /><br />
             E-mail: <input type="text" name="email" /><br />
             Endereço: <input type="text" name="endereco" /><br />

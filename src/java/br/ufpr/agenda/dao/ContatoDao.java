@@ -114,15 +114,14 @@ public class ContatoDao {
         }
 
     }
-
-    public void remove(Contato contato) {
-
+    
+    public void remove(Long id) {
         try {
 
             PreparedStatement stmt = conexao.prepareStatement("delete"
                     + " from contatos where id=?");
             
-            stmt.setLong(1, contato.getId());
+            stmt.setLong(1, id);
             
             stmt.execute();
             stmt.close();
@@ -130,6 +129,11 @@ public class ContatoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void remove(Contato contato) {
+
+        remove(contato.getId());
 
     }
 

@@ -3,22 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufpr.agenda.servlets;
+package br.ufpr.agenda.mvc.logica;
 
 import br.ufpr.agenda.dao.ContatoDao;
 import br.ufpr.agenda.modelo.Contato;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,15 +18,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ufpr
  */
-@WebServlet(name = "adicionaContato", urlPatterns = {"/adicionaContato"})
-public class AdicionaContatoServlet extends HttpServlet {
+public class AdicionaContato implements Logica {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String executa(HttpServletRequest req, HttpServletResponse resp) {
         
-        //Log...
-        
- 
         String nome = req.getParameter("nome");
         String email = req.getParameter("email");
         String endereco = req.getParameter("endereco");
@@ -63,11 +51,8 @@ public class AdicionaContatoServlet extends HttpServlet {
         ContatoDao dao = new ContatoDao();
         dao.adiciona(contato);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/contato-adicionado.jsp");
-        dispatcher.forward(req, resp);
-        
+        return "contato-adicionado.jsp";
     
     }
-
     
 }
